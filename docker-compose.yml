@@ -16,6 +16,5 @@ services:
     environment:
       ENABLE_SSL: 'false'
       COMPOSE_HTTP_TIMEOUT: "120"
-      DATABASE_URL: "postgres://postgres@db:5432/postgres"
     depends_on:
       - db

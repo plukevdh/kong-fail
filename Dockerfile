@@ -1,10 +1,9 @@
-FROM mashape/kong:0.8.3
+FROM mashape/kong:0.9.0
 
 ENV ENABLE_SSL "false"
-COPY kong.yml /etc/kong/kong.yml
+COPY kong.conf /etc/kong/kong.conf
 
 WORKDIR /kong
-COPY Makefile /kong/Makefile
 
 EXPOSE 8000 8001
-CMD kong start
+CMD ["kong", "start", "-vv", "--conf", "/etc/kong/kong.conf"]
