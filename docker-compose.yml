@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.4
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    restart: always
+    tty: true
+    ports:
+      - "8000"
+      - "8001:8001"
+      - "8443"
+    environment:
+      ENABLE_SSL: 'false'
+      COMPOSE_HTTP_TIMEOUT: "120"
+      DATABASE_URL: "postgres://postgres@db:5432/postgres"
+    depends_on:
+      - db
